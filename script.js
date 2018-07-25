@@ -33,7 +33,7 @@ function writeDate() {
     var today = new Date(); // get current date
     var dateStamp = document.createElement('span'); // create span element
     dateStamp.textContent = today.toDateString(); // set date stamp 
-    $('#date').append(dateStamp); // append bullet onto DOM ul element  
+    $('#date').append(dateStamp); // append bullet onto DOM element  
 }
 
 
