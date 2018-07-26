@@ -8,16 +8,30 @@ $.ajaxPrefilter(function(options) { /* NodeJS proxy which adds CORS (Cross-Origi
     }
 });
 
-$.get('https://en.wikipedia.org/wiki/Main_Page', function(response) {
+$( document ).ready(function() {
 
-  var allItems = $(response).find('#mp-otd ul').first().children();
-  allItems.each(function(index) {
-    items.push(allItems.eq(index).text());
+    $.ajax({
+        url: "https://en.wikipedia.org/wiki/main_page", 
+        method: 'GET',
+        context: document.body,
+        cache: false,
+        crossDomain: true,
+        dataType: 'html',
+        success: function(response){
+            var allItems = $(response).find('#mp-right').find('#mp-otd ul').first().children();
+            allItems.each(function(index) {
+                items.push(allItems.eq(index).text());
+                });
+
+                createList();
+                writeDate();
+            },
+        error: function (request, status, error) {
+            console.log(request.responseText + status + error);
+        }
     });
-    
-    createList();
-    writeDate();
 });
+
 
 function createList() {
     // print list
@@ -33,7 +47,7 @@ function writeDate() {
     var today = new Date(); // get current date
     var dateStamp = document.createElement('span'); // create span element
     dateStamp.textContent = today.toDateString(); // set date stamp 
-    $('#date').append(dateStamp); // append bullet onto DOM element  
+    $('#date').append(dateStamp); // append bullet onto DOM ul element  
 }
 
 
