@@ -26,6 +26,18 @@
                 background-repeat: no-repeat;
                 background-size: cover;
             }
+
+            #list {
+                height: 300px;
+                overflow-y: scroll;
+                z-index: 10;
+            }
+            
+            @media screen and (max-width : 750px) {
+                h1 {
+                    font-size: 1.5em !important;
+                }
+            }
             </style>
 </head>
 <body>
@@ -33,7 +45,7 @@
     <div class="container fixed-top">
         <h1 class="display-4 mt-5 mb-5 text-white">Today in History on <span id='date'></span>:</h1>
 
-        <ul id='list' class="list-group"></ul>  
+        <ul id='list' class="list-group"></ul>   
         <p class="text-white text-right">Source: Wikipedia</p>
     </div>
     
@@ -43,6 +55,6 @@
         integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
         crossorigin="anonymous">
     </script>
-    <script src='../script.js'></script>
+    <script src='script.js'></script>
 </body>
 </html>
